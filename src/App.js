@@ -14,6 +14,7 @@ import profile from './operations/profile'
 import students from './operations/students'
 import teachers from './operations/teachers'
 import docs from './operations/docs'
+import attendance from './operations/attendance'
 
 import fees from './operations/fees'
 import payments from './operations/payments'
@@ -42,7 +43,7 @@ const App = () => (
 
     <Resource name='fees' {...fees} />
     <Resource name='payments' {...payments} />
-
+    <Resource name='attendance' {...attendance} />
     <CustomRoutes>
       <Route exact path='/profile' element={<profile.show />} />
       <Route exact path='/students/:studentId/fees' element={<fees.list />} />
@@ -57,10 +58,8 @@ const App = () => (
       />
       <Route exact path='/fees/:feeId/show' element={<fees.show />} />
       <Route exact path='/fees' element={<fees.listByStatus />} />
-
       <Route exact path='/fees/:feeId/payments' element={<payments.list />} />
       <Route exact path='/fees/:feeId/payments/create' element={<payments.create />} />
-
       <Route exact path='/docs/hei-docs' element={<docs.list title='Documents reliés à HEI' resource='hei-docs' />} />
     </CustomRoutes>
   </Admin>

@@ -18,6 +18,7 @@ export function AutocompleteFilter({ source, label, fetcher, labelKey, valueKey,
           const value = getObjValue(el, valueKey)
           return { label, value }
         })
+        console.log(newOptions)
         setData(prev => ({ ...prev, options: newOptions, pending: false }))
       })
       .catch(() => setData(prev => ({ ...prev, pending: false })))
@@ -35,10 +36,11 @@ export function AutocompleteFilter({ source, label, fetcher, labelKey, valueKey,
 
   return (
     <Autocomplete
-      loadingText='Chargement...'
       multiple
+      loadingText='Chargement...'
       sx={{ width: '100%' }}
       loading={data.pending}
+      noOptionsText={'Aucune option trouvée'}
       options={data.options}
       inputValue={data.inputValue}
       value={currentFilter[source] || []}
