@@ -1,11 +1,10 @@
 import React, { useState } from 'react'
-import { Box, Button, useMediaQuery } from '@mui/material'
+import { Box, Button } from '@mui/material'
 import { AttendanceMovementType } from '@haapi/typescript-client';
 import { qrcode } from './config';
 
 export function Actions({ studentId, sx = {} }) {
   const [ clicked, setClicked ] = useState('')
-  const isSmall = useMediaQuery('(max-width: 750px)')
 
   const removeClicked = async ()=> setTimeout(()=>setClicked(''), 2500)
   
@@ -22,7 +21,7 @@ export function Actions({ studentId, sx = {} }) {
       <Button 
         variant='outlined' 
         color='primary' 
-        size={isSmall ? 'small' : 'medium'}
+        size='small'
         onClick={()=>handlerClick(AttendanceMovementType.IN)}
       >
         {clicked === AttendanceMovementType.IN ? 'Succès' : 'Arriver'}
@@ -30,7 +29,7 @@ export function Actions({ studentId, sx = {} }) {
       <Button 
         variant='outlined' 
         color='warning' 
-        size={ isSmall ? 'small' : 'medium' }
+        size='small'
         onClick={() => handlerClick(AttendanceMovementType.OUT)}
       >
         {clicked === AttendanceMovementType.OUT ? 'Succès' : 'Sortie'}
