@@ -1,7 +1,11 @@
-import { AttendanceList } from "./list/AttendanceList";
+import { AttendanceList } from "./list";
+import { CreateByList } from "./create"
+export * from "./create"
+export * from "./list"
 
 const attendance = {
-  list: AttendanceList
+  list: AttendanceList,
+  create: CreateByList,
 }
 
 export default attendance;
