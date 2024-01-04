@@ -21,10 +21,11 @@ import payments from './operations/payments'
 import { HaLayout } from './ui/haLayout'
 import HaLoginPage from './security/LoginPage'
 import { heiDocs } from './operations/heiDocs'
+import { WaitUntilHot } from './utils/retryer/WaitUntilHot'
 
 const FeeCreate = React.lazy(() => import('./operations/fees/FeesCreate'))
 
-const App = () => (
+const AppBase = () => (
   <Admin
     title='HEI Admin'
     authProvider={authProvider}
@@ -65,5 +66,14 @@ const App = () => (
     </CustomRoutes>
   </Admin>
 )
+
+const App = ()=>{
+  const API_URL = process.env.REACT_APP_API_URL;
+  return (
+    <WaitUntilHot url={`${API_URL}/ping`}>
+      <AppBase/>
+    </WaitUntilHot>
+  )
+}
 
 export default App
