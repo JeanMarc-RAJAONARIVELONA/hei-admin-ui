@@ -11,8 +11,8 @@
  */
 function logSuccessCall(id) {
   let str = "";
-  if (id) str += `(${id})`;
-  str += " resolved";
+  if (id) str += `[${id}]: `;
+  str += "resolved";
   console.log(str, "\n");
 }
 
@@ -21,8 +21,8 @@ function logSuccessCall(id) {
  */
 function logRetryCall({ id, attempt }) {
   let str = "";
-  if (id) str += `(${id}) `;
-  str += `attempt (${attempt})`;
+  if (id) str += `[${id}]: `;
+  str += `Attempt (${attempt})`;
   console.log(str, "\n");
 }
 
@@ -31,9 +31,9 @@ function logRetryCall({ id, attempt }) {
  */
 function logBackoff({ id, attemptLeft, backoff }) {
   let str = "";
-  if (id) str += `(${id})\n`;
+  if (id) str += `[${id}]: `;
   str +=
-    `${attemptLeft} attempt left\n` + `waiting ${backoff}ms before retrying`;
+    `${attemptLeft} attempt left, ` + `waiting ${backoff}ms before retrying`;
   console.log(str, "\n");
 }
 
