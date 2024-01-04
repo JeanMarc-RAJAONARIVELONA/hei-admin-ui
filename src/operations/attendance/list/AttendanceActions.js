@@ -17,6 +17,7 @@ export function AttendanceActions() {
           source='attendance_statuses'
           valueKey='value'
           labelKey='label'
+          data-testid='attendance-status-filter'
         />
         <AutocompleteFilter
           fetcher={courseCode => teachingApi().getCourses(courseCode, undefined, undefined, undefined, undefined, undefined, undefined, 1, 5)}
@@ -25,12 +26,14 @@ export function AttendanceActions() {
           labelKeyOnNull='name'
           valueKey='id'
           source='courses_ids'
+          data-testid='course-code-filter'
         />
         <AutocompleteFilter
           fetcher={first_name => usersApi().getTeachers(1, 5, undefined, first_name)}
           label='Enseignants'
           labelKey='first_name'
           labelKeyOnNull='last_name'
+          data-testid='teacher-filter'
           valueKey='id'
           source='teachers_ids'
         />

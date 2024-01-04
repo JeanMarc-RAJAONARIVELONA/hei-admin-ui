@@ -33,4 +33,5 @@ export const editedManager2: Manager = {
   entrance_datetime: new Date('2021-09-08T08:25:29Z'),
   status: EnableStatus.ENABLED
 }
+
 export const whoamiManagerMock: Whoami = { id: manager2.id, role: WhoamiRoleEnum.MANAGER, bearer: 'token == null ? undefined : token' }
