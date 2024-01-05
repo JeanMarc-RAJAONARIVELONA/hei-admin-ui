@@ -5,9 +5,12 @@ import { AttachMoney } from '@mui/icons-material'
 
 import { WhoamiRoleEnum } from '@haapi/typescript-client'
 import authProvider from '../../providers/authProvider'
+import { GenCertificateButton } from '../utils'
 
 const ActionsOnShow = ({ basePath, data, resource }) => {
   const record = useRecordContext()
+  const role = authProvider.getCachedRole()
+
   return (
     <TopToolbar disableGutters>
       <EditButton basePath={basePath} resource={resource} record={data} />
@@ -16,6 +19,7 @@ const ActionsOnShow = ({ basePath, data, resource }) => {
           <AttachMoney />
         </Button>
       )}
+      { (role != WhoamiRoleEnum.TEACHER && record) && <GenCertificateButton studentId={record.id}/> }
     </TopToolbar>
   )
 }

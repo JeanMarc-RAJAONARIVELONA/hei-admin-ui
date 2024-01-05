@@ -1,8 +1,8 @@
-import { EmailField, FunctionField, SimpleShowLayout, Show, TextField, TopToolbar, EditButton, NumberField } from 'react-admin'
+import { EmailField, FunctionField, SimpleShowLayout, Show, TextField, TopToolbar, EditButton, NumberField, Button, useNotify } from 'react-admin'
 import { Link } from '@mui/material'
 import authProvider from '../../providers/authProvider'
-import { unexpectedValue, CustomDateField } from '../utils'
-import { EnableStatus, Sex } from '@haapi/typescript-client'
+import { unexpectedValue, CustomDateField, GenCertificateButton } from '../utils'
+import { EnableStatus, Sex, WhoamiRoleEnum } from '@haapi/typescript-client'
 
 export const ProfileLayout = () => {
   const emptyText = 'Non défini.e'
@@ -44,9 +44,11 @@ export const ProfileLayout = () => {
 }
 
 const Actions = ({ userId }) => {
+  const role = authProvider.getCachedRole()
   return (
     <TopToolbar>
       <EditButton to={`/profile/${userId}/edit`} data-testid='profile-edit-button' />
+      { role == WhoamiRoleEnum.STUDENT && <GenCertificateButton studentId={userId} /> }
     </TopToolbar>
   )
 }
