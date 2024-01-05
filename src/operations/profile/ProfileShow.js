@@ -48,7 +48,7 @@ const Actions = ({ userId }) => {
   return (
     <TopToolbar>
       <EditButton to={`/profile/${userId}/edit`} data-testid='profile-edit-button' />
-      { role == WhoamiRoleEnum.STUDENT && <GenCertificateButton studentId={userId} /> }
+      {role == WhoamiRoleEnum.STUDENT && <GenCertificateButton studentId={userId} />}
     </TopToolbar>
   )
 }

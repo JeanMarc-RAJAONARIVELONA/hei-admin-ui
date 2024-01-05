@@ -19,7 +19,7 @@ const ActionsOnShow = ({ basePath, data, resource }) => {
           <AttachMoney />
         </Button>
       )}
-      { (role != WhoamiRoleEnum.TEACHER && record) && <GenCertificateButton studentId={record.id}/> }
+      {role != WhoamiRoleEnum.TEACHER && record && <GenCertificateButton studentId={record.id} />}
     </TopToolbar>
   )
 }
